@@ -2791,3 +2791,412 @@
 # print(c)
 
 # 28
+
+
+#####
+# 241 현재시간
+# datetime 모듈을 사용해서 현재 시간을 화면에 출력해보세요.
+
+# import datetime
+#
+# now = datetime.datetime.now()
+# print(now)
+
+# 242 현재시간의 타입
+# datetime 모듈의 now 함수의 리턴 값의 타입을 화면에 출력해보세요.
+
+# import datetime
+#
+# now = datetime.datetime.now()
+# print(now, type(now))
+
+# 243 timedelta
+# datetime 모듈의 timedelta를 사용해서 오늘로부터 5일, 4일, 3일, 2일, 1일 전의 날짜를 화면에 출력해보세요.
+
+# import datetime
+#
+# now = datetime.datetime.now()
+#
+# for day in range(5, 0, -1):
+#     delta = datetime.timedelta(days=day)
+#     date = now - delta
+#     print(date)
+
+# 244 strftime
+# 현재시간을 얻어온 후 다음과 같은 포맷으로 시간을 출력해보세요. strftime 메서드를 사용하세요.
+#
+# 18:35:01
+
+# import datetime
+#
+# now = datetime.datetime.now()
+# print(now.strftime("%H:%M:%S"))
+
+# 245 strptime
+# datetime.datetime.strptime 메서드를 사용하면 문자열 형식의 시간을 datetime.datetime 타입의 시간 값으로 만들어줍니다. "2020-05-04"의 문자열을 시간 타입으로 변환해보세요.
+
+# import datetime
+#
+# day = "2020-05-04"
+# ret = datetime.datetime.strptime(day, "%Y-%m-%d")
+# print(ret, type(ret))
+
+# 246 sleep 함수
+# time 모듈, datetime 모듈을 사용해서 1초에 한 번 현재 시간을 출력하는 코드를 작성하세요.
+
+# import time
+# import datetime
+#
+# while True:
+#     now = datetime.datetime.now()
+#     print(now)
+#     time.sleep(1)
+
+# 247 모듈 임포트
+# 모듈을 임포트하는 4가지 방식에 대해 설명해보세요.
+
+# import ~
+
+# 248 os 모듈
+# os 모듈의 getcwd 함수를 호출하여 현재 디렉터리의 경로를 화면에 출력해보세요.
+
+# import os
+# ret = os.getcwd()
+# print(ret, type(ret))
+
+# 249 rename 함수
+# 바탕화면에 텍스트 파일을 하나 생성한 후 os 모듈의 rename 함수를 호출하여 해당 파일의 이름을 변경해보세요.
+
+# import os
+# os.rename("C:/Users/hyunh/Desktop/before.txt", "C:/Users/hyunh/Desktop/after.txt")
+
+# 250 numpy
+# numpy 모듈의 arange 함수를 사용해서 0.0 부터 5.0까지 0.1씩 증가하는 값을 화면에 출력해보세요.
+
+# import numpy
+# for i in numpy.arange(0, 5, 0.1):
+#     print(i)
+
+# 251 클래스, 객체, 인스턴스
+# 클래스, 객체, 인스턴스에 대해 설명해봅시다.
+
+# 252 클래스 정의
+# 비어있는 사람 (Human) 클래스를 "정의" 해보세요.
+
+# class Human:
+#     pass
+
+# 253 인스턴스 생성
+# 사람 (Human) 클래스의 인스턴스를 "생성" 하고 이를 areum 변수로 바인딩해보세요.
+
+# class Human:
+#     pass
+#
+# areum = Human()
+
+# 254 클래스 생성자-1
+# 사람 (Human) 클래스에 "응애응애"를 출력하는 생성자를 추가하세요.
+#
+# >>> areum = Human()
+# 응애응애
+
+# class Human:
+#     def __init__(self):
+#         print("응애응애")
+#
+# areum = Human()
+
+# 255 클래스 생성자-2
+# 사람 (Human) 클래스에 (이름, 나이, 성별)을 받는 생성자를 추가하세요.
+#
+# >>> areum = Human("아름", 25, "여자")
+
+# class Human:
+#     def __init__(self, name, age, sex):
+#         self.name = name
+#         self.age = age
+#         self.sex = sex
+#
+# areum = Human("아름", 25, "여자")
+# print(areum.name)
+
+# 256 인스턴스 속성에 접근
+# 255에서 생성한 인스턴스의 이름, 나이, 성별을 출력하세요. 인스턴스 변수에 접근하여 값을 출력하면 됩니다.
+#
+# 이름: 조아름, 나이: 25, 성별: 여자
+# 인스턴스 변수에 접근하여 값을 가져오는 예
+#
+# >>> areum.age
+# 25
+
+# class Human:
+#     def __init__(self, name, age, sex):
+#         self.name = name
+#         self.age = age
+#         self.sex = sex
+#
+# areum = Human("아름", 25, "여자")
+# print(areum.age)
+
+# 257 클래스 메소드 - 1
+# 사람 (Human) 클래스에서 이름, 나이, 성별을 출력하는 who() 메소드를 추가하세요.
+#
+# >>> areum.who()
+# 이름: 조아름, 나이: 25, 성별: 여자
+
+# class Human:
+#     def __init__(self, name, age, sex):
+#         self.name = name
+#         self.age = age
+#         self.sex = sex
+#
+#     def who(self):
+#         print("이름: {} 나이: {} 성별: {}".format(self.name, self.age, self.sex))
+#
+# areum = Human("아름", 25, "여자")
+# areum.who()      # Human.who(areum)
+
+
+# 258 클래스 메소드 - 2
+# 사람 (Human) 클래스에 (이름, 나이, 성별)을 받는 setInfo 메소드를 추가하세요.
+#
+# >>> areum = Human("모름", 0, "모름")
+# >>> areum.setInfo("아름", 25, "여자")
+
+# class Human:
+#     def __init__(self, name, age, sex):
+#         self.name = name
+#         self.age = age
+#         self.sex = sex
+#
+#     def who(self):
+#         print("이름: {} 나이: {} 성별: {}".format(self.name, self.age, self.sex))
+#
+#     def setInfo(self, name, age, sex):
+#         self.name = name
+#         self.age = age
+#         self.sex = sex
+#
+#
+# areum = Human("불명", "미상", "모름")
+# areum.who()      # Human.who(areum)
+#
+# areum.setInfo("아름", 25, "여자")
+# areum.who()      # Human.who(areum)
+
+# 259 클래스 소멸자
+# 사람 (human) 클래스에 "나의 죽음을 알리지 말라"를 출력하는 소멸자를 추가하세요.
+#
+# >>> areum = Human("아름", 25, "여자")
+# >>> del areum
+# 나의 죽음을 알리지 말라
+
+# class Human:
+#     def __init__(self, name, age, sex):
+#         self.name = name
+#         self.age = age
+#         self.sex = sex
+#
+#     def __del__(self):
+#         print("나의 죽음을 알리지마라")
+#
+#     def who(self):
+#         print("이름: {} 나이: {} 성별: {}".format(self.name, self.age, self.sex))
+#
+#     def setInfo(self, name, age, sex):
+#         self.name = name
+#         self.age = age
+#         self.sex = sex
+#
+# areum = Human("아름", 25, "여자")
+# del(areum)
+
+# 260 에러의 원인
+# 아래와 같은 에러가 발생한 원인에 대해 설명하세요.
+#
+# class OMG :
+#     def print() :
+#         print("Oh my god")
+#
+# >>> >>> myStock = OMG()
+# >>> myStock.print()
+# TypeError Traceback (most recent call last)
+# <ipython-input-233-c85c04535b22> in <module>()
+# ----> myStock.print()
+#
+# TypeError: print() takes 0 positional arguments but 1 was given
+
+# class OMG :
+#     def print(self) :
+#         print("Oh my god")
+#
+#
+# mystock = OMG()
+# mystock.print()      # OMG.print(mystock)
+
+# 261 Stock 클래스 생성
+# 주식 종목에 대한 정보를 저장하는 Stock 클래스를 정의해보세요. 클래스는 속성과 메서드를 갖고 있지 않습니다.
+
+# class Stock:
+#     pass
+
+# 262 생성자
+# Stock 클래스의 객체가 생성될 때 종목명과 종목코드를 입력 받을 수 있도록 생성자를 정의해보세요.
+#
+# 삼성 = Stock("삼성전자", "005930")
+
+# class Stock:
+#     def __init__(self, name, code):
+#         self.name = name
+#         self.code = code
+
+# 263 메서드
+# 객체에 종목명을 입력할 수 있는 set_name 메서드를 추가해보세요.
+#
+# a = Stock(None, None)
+# a.set_name("삼성전자")
+
+# class Stock:
+#     def __init__(self, name, code):
+#         self.name = name
+#         self.code = code
+#
+#     def set_name(self, name):
+#         self.name = name
+
+# 264 메서드
+# 객체에 종목코드를 입력할 수 있는 set_code 메서드를 추가해보세요.
+#
+# a = Stock(None, None)
+# a.set_code("005930")
+
+# class Stock:
+#     def __init__(self, name, code):
+#         self.name = name
+#         self.code = code
+#
+#     def set_name(self, name):
+#         self.name = name
+#
+#     def set_code(self, code):
+#         self.code = code
+
+# 265 메서드
+# 종목명과 종목코드를 리턴하는 get_name, get_code 메서드를 추가하세요. 해당 메서드를 사용하여 종목명과 종목코드를 얻고 이를 출력해보세요.
+#
+# 삼성 = Stock("삼성전자", "005930")
+
+# class Stock:
+#     def __init__(self, name, code):
+#         self.name = name
+#         self.code = code
+#
+#     def set_name(self, name):
+#         self.name = name
+#
+#     def set_code(self, code):
+#         self.code = code
+#
+#     def get_name(self):
+#         print(self.name)
+#
+#     def get_code(self):
+#         print(self.code)
+#
+# 삼성.get_name()
+# 삼성.get_code()
+
+# 266 객체의 속성값 업데이트
+# 생성자에서 종목명, 종목코드, PER, PBR, 배당수익률을 입력 받을 수 있도록 생성자를 수정하세요. PER, PBR, 배당수익률은 float 타입입니다.
+
+# class Stock:
+#     def __init__(self, name, code, per, pbr, 배당수익률):
+#         self.name = name
+#         self.code = code
+#         self.per = per
+#         self.pbr = pbr
+#         self.배당수익률 = 배당수익률
+#
+#     def set_name(self, name):
+#         self.name = name
+#
+#     def set_code(self, code):
+#         self.code = code
+#
+#     def get_name(self):
+#         return self.name
+#
+#     def get_code(self):
+#         return self.code
+
+# 267 객체 생성
+# 266번에서 정의한 생성자를 통해 다음 정보를 갖는 객체를 생성해보세요.
+#
+# 항목	정보
+# 종목명	삼성전자
+# 종목코드	005930
+# PER	15.79
+# PBR	1.33
+# 배당수익률	2.83
+
+# 삼성 = Stock("삼성전자", "005930", 15.79, 1.33, 2.83)
+
+# 268 객체의 속성 수정
+# PER, PBR, 배당수익률은 변경될 수 있는 값입니다. 이 값을 변경할 때 사용하는 set_per, set_pbr, set_dividend 메서드를 추가하세요.
+
+# class Stock:
+#     def __init__(self, name, code, per, pbr, dividend):
+#         self.name = name
+#         self.code = code
+#         self.per = per
+#         self.pbr = pbr
+#         self.dividend = dividend
+#
+#     def set_name(self, name):
+#         self.name = name
+#
+#     def set_code(self, code):
+#         self.code = code
+#
+#     def get_name(self):
+#         return self.name
+#
+#     def get_code(self):
+#         return self.code
+#
+#     def set_per(self, per):
+#         self.per = per
+#
+#     def set_pbr(self, pbr):
+#         self.pbr = pbr
+#
+#     def set_dividend(self, dividend):
+#         self.dividend = dividend
+
+# 269 객체의 속성 수정
+# 267번에서 생성한 객체에 set_per 메서드를 호출하여 per 값을 12.75로 수정해보세요.
+
+# 삼성 = Stock("삼성전자", "005930", 15.79, 1.33, 2.83)
+# 삼성.set_per(12.75)
+
+# 270 여러 종목의 객체 생성
+# 아래의 표를 참조하여 3종목에 대해 객체를 생성하고 이를 파이썬 리스트에 저장하세요. 파이썬 리스트에 저장된 각 종목에 대해 for 루프를 통해 종목코드와 PER을 출력해보세요.
+#
+# 종목명	종목코드	PER	PBR	배당수익률
+# 삼성전자	005930	15.79	1.33	2.83
+# 현대차	005380	8.70	0.35	4.27
+# LG전자	066570	317.34	0.69	1.37
+
+# 종목 = []
+#
+# 삼성 = Stock("삼성전자", "005930", 15.79, 1.33, 2.83)
+# 현대차 = Stock("현대차", "005380", 8.70, 0.35, 4.27)
+# LG전자 = Stock("LG전자", "066570", 317.34, 0.69, 1.37)
+#
+# 종목.append(삼성)
+# 종목.append(현대차)
+# 종목.append(LG전자)
+#
+# for i in 종목:
+#     print(i.code, i.per)
+
