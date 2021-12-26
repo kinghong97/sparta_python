@@ -2,12 +2,26 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Title</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <div>
+    <div id="desk-head-container">
+            <img class="logo-icon" src="insta-logo.png" onclick="load()"/>
+            <div id="desk-search">
+                <input placeholder="검색">
+            </div>
+            <div id="head-icons">
+                <img class="icon" src="home@3x.png"/>
+                <img class="icon" src="dm@3x.png"/>
+                <img class="icon" src="trending@3x.png"/>
+                <img class="icon" src="like@3x.png"/>
+                <img class="icon" style="padding-bottom: 5%" src="more@3x.png" alt="">
+            </div>
+        </div>
+    <div id="all-container">
         <div id="head-container">
                 <img class="left-head-icon side-head-icon" src="camera@3x.png"/>
                 <img class="logo-icon" src="insta-logo.png" onclick="load()"/>
@@ -20,27 +34,38 @@
                 <img class="foot-icon" src="like@3x.png"/>
                 <img class="foot-icon" src="home@3x.png"/>
         </div>
+
         <div id="main-container">
-            <div id="story-container"></div>
-            <div id="feed-container"></div>
+            <div style="max-width: 600px;">
+                <div id="story-container"></div>
+                <div id="feed-container"></div>
+            </div>
+            <div id="follow-container">
+                <div id="follow-wrapper">
+                    <p><strong>회원님을 위한 추천</strong></p>
+                    <p style="font-size: 1rem; color: #000000"><strong>모두 보기</strong></p>
+                </div>
+                <div id="follow-people">
+
+                </div>
+            </div>
         </div>
     </div>
     <script>
         let story_list = [{'src': '12344.gif', 'name': '제리'},{'src': '595454.PNG', 'name': '제리'},
-                            {'src': '12344.jpg', 'name': '제리'},{'src': '13444.jpg', 'name': '제리'},{'src': '15202.PNG', 'name': '제리'},
-                            {'src': '595454.PNG', 'name': '제리'},{'src': '12344.jpg', 'name': '제리'},{'src': '13444.jpg', 'name': '제리'},]
+                            {'src': '12344.jpg', 'name': '제리'},{'src': '13444.jpg', 'name': '제리'},{'src': '15202.PNG', 'name': '제리'}]
         function storyclick(data){
             data.classList.replace('story-img', 'clicked-story-img')
         }
         function like(data){
-            if (data.attributes[2].value === 'like@3x.png'){
+            if (data.attributes[3].value === 'like@3x.png'){
                 data.setAttribute('src', 'like@4x.png')
             }else {
                 data.setAttribute('src', 'like@3x.png')
             }
         }
         function favorite(data){
-            if (data.attributes[2].value === 'favorite@3x.png'){
+            if (data.attributes[3].value === 'favorite@3x.png'){
                 data.setAttribute('src', 'favorite@4x.png')
             }else {
                 data.setAttribute('src', 'favorite@3x.png')
@@ -48,8 +73,11 @@
         }
         makefeed(story_list)
         makestory(story_list)
+        makefeed(story_list)
+        makestory(story_list)
+        followme(story_list)
         function makestory(data){
-            b = 1
+            let b = 1
             for (a of data){
                 let imgsrc = a['src']
                 let name = a['name']
@@ -64,7 +92,7 @@
             }
         }
         function makefeed(data){
-            b = 1
+            let b = 1
             for (a of data){
                 let imgsrc = a['src']
                 let name = a['name']
@@ -75,18 +103,18 @@
                                             <img class="feed-head-img" src="${imgsrc}" alt="">
                                             <div>${name}${b}</div>
                                         </div>
-                                        <img style="width: 3rem; height: 1rem; padding-right: 2%;" src="more@3x.png" alt="">
+                                        <img class="more-icon" style="" src="more@3x.png" alt="">
                                     </div>
                                     <img class="feed-img" src="${imgsrc}" alt="">
-                                    <div>
+                                    <div style="margin-top: -2%;">
                                         <div class="feed-icons-container">
                                             <div class="feed-icons-wrapper">
-                                                <img class="feed-icon" onclick="like(this)" src="like@3x.png">
+                                                <img class="feed-icon" style=""  onclick="like(this)" src="like@3x.png">
                                                 <img class="feed-icon" src="comment@3x.png">
                                                 <img class="feed-icon" src="dm@3x.png">
                                             </div>
 
-                                            <img class="feed-icon" onclick="favorite(this)" src="favorite@3x.png">
+                                            <img class="feed-icon feed-right-icon" style="" onclick="favorite(this)" src="favorite@3x.png">
 
                                         </div>
                                         <div class="feed-feed-container">
@@ -106,6 +134,26 @@
                                 </div>`
 
                 $('#feed-container').append(feedtemp)
+                b++
+            }
+        }
+        function followme(data){
+            let b = 1
+            for (a of data){
+                let imgsrc = a['src']
+                let name = a['name']
+                let temp = `<div class="container">
+                                <div class="wrapper">
+                                    <div><img class="icon" src="${imgsrc}"/>
+                                    </div>
+                                    <div style="padding-left: 5%">
+                                        <div><strong>${name}${b}</strong></div>
+                                        <p>회원님을 위한 추천</p>
+                                    </div>
+                                </div>
+                                <p>팔로우</p>
+                            </div>`
+                $('#follow-people').append(temp)
                 b++
             }
         }
