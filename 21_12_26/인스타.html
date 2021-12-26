@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div>
+        <div id="head-container">
+                <img class="left-head-icon side-head-icon" src="camera@3x.png"/>
+                <img class="logo-icon" src="insta-logo.png" onclick="load()"/>
+                <img class="right-head-icon side-head-icon" src="dm@3x.png"/>
+        </div>
+        <div id="foot-container">
+                <img class="foot-icon" src="home@3x.png"/>
+                <img class="foot-icon" src="search@3x.png"/>
+                <img class="foot-icon" src="trending@3x.png"/>
+                <img class="foot-icon" src="like@3x.png"/>
+                <img class="foot-icon" src="home@3x.png"/>
+        </div>
+        <div id="main-container">
+            <div id="story-container"></div>
+            <div id="feed-container"></div>
+        </div>
+    </div>
+    <script>
+        let story_list = [{'src': '12344.gif', 'name': '제리'},{'src': '595454.PNG', 'name': '제리'},
+                            {'src': '12344.jpg', 'name': '제리'},{'src': '13444.jpg', 'name': '제리'},{'src': '15202.PNG', 'name': '제리'},
+                            {'src': '595454.PNG', 'name': '제리'},{'src': '12344.jpg', 'name': '제리'},{'src': '13444.jpg', 'name': '제리'},]
+        function storyclick(data){
+            data.classList.replace('story-img', 'clicked-story-img')
+        }
+        function like(data){
+            if (data.attributes[2].value === 'like@3x.png'){
+                data.setAttribute('src', 'like@4x.png')
+            }else {
+                data.setAttribute('src', 'like@3x.png')
+            }
+        }
+        function favorite(data){
+            if (data.attributes[2].value === 'favorite@3x.png'){
+                data.setAttribute('src', 'favorite@4x.png')
+            }else {
+                data.setAttribute('src', 'favorite@3x.png')
+            }
+        }
+        makefeed(story_list)
+        makestory(story_list)
+        function makestory(data){
+            b = 1
+            for (a of data){
+                let imgsrc = a['src']
+                let name = a['name']
+
+                let storytemp = `<div class="story-wrapper">
+                            <img class="story-img " src="${imgsrc}" alt="" onClick="storyclick(this)">
+                                <div>${name}${b}</div>
+                        </div>`
+
+                $('#story-container').append(storytemp)
+                b++
+            }
+        }
+        function makefeed(data){
+            b = 1
+            for (a of data){
+                let imgsrc = a['src']
+                let name = a['name']
+
+                let feedtemp = `<div class="feed-wrapper">
+                                    <div class="feed-head-container">
+                                        <div class="feed-head-wrapper">
+                                            <img class="feed-head-img" src="${imgsrc}" alt="">
+                                            <div>${name}${b}</div>
+                                        </div>
+                                        <img style="width: 3rem; height: 1rem; padding-right: 2%;" src="more@3x.png" alt="">
+                                    </div>
+                                    <img class="feed-img" src="${imgsrc}" alt="">
+                                    <div>
+                                        <div class="feed-icons-container">
+                                            <div class="feed-icons-wrapper">
+                                                <img class="feed-icon" onclick="like(this)" src="like@3x.png">
+                                                <img class="feed-icon" src="comment@3x.png">
+                                                <img class="feed-icon" src="dm@3x.png">
+                                            </div>
+
+                                            <img class="feed-icon" onclick="favorite(this)" src="favorite@3x.png">
+
+                                        </div>
+                                        <div class="feed-feed-container">
+                                            <div class="feed-like-wrapper">
+                                                <img class="feed-like-img" src="${imgsrc}" alt="">
+                                                <div><strong>${name}${b}</strong>님 외에 <strong>9999명</strong>이 좋아합니다</div>
+                                            </div>
+                                            <div class="feed-feed-wrapper">
+                                                <div class="feed-msg">
+                                                    <strong>${name}${b}</strong> 안녕하세요
+                                                </div>
+                                                <div class="feed-time">12시간 전</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>`
+
+                $('#feed-container').append(feedtemp)
+                b++
+            }
+        }
+        function load(){
+            window.location.reload()
+        }
+    </script>
+</body>
+</html>
